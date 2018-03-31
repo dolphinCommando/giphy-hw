@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>GifTastic</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">GifTastic App</h1>
+            <p class="lead">Customize your .GIFS</p>
+            <hr class="my-4">
+            <form>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="search-box" aria-describedby="search" placeholder="Search GIPHY">
+                </div>
+                <button type="submit" id="search-submit" class="btn btn-primary">Go</button>
+            </form>
+        </div>
+    </div>
+    <div class="container" id="gif-buttons">
+        <button type="button" class="btn btn-info gif-button">Terminator</button>
+        <button type="button" class="btn btn-info gif-button">Jurassic Park</button>
+    </div>
+    <div class="container" id="gif-gifs">
+        <div class="row">
+
+        </div>
+    </div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="assets/javascript/app.js"></script>
+</body>
+</html>
