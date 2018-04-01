@@ -1,0 +1,9 @@
+#help {
+    position: relative;
+    left: 35vw;
+    top: 35vh;
+}
+
+button {
+    cursor: pointer;
+}
