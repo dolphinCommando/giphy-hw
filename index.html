@@ -12,8 +12,10 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <nav class="navbar navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
         <a class="navbar-brand" href="#">GifTastic</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <div class="nav-item dropdown mr-auto">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Topics <span class="badge badge-light topic-number"></span></a>
             <div class="dropdown-menu" id="gif-buttons" aria-labelledby="navbarDropdown">
@@ -28,8 +30,9 @@
             <input class="form-control mr-sm-2" type="search" placeholder="Choose a topic" aria-label="Search" id ="add-text">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="add-submit">Add</button>
         </form>
+        </div>
     </nav>
-    <p id="help" class="text-info">Choose a topic from the menu to display .GIF's here.</p>
+    <p id="help" class="text-info">Choose a topic from the menu to display GIFs here.</p>
     <div class="container" id="gif-gifs">
         <div class="row">
 

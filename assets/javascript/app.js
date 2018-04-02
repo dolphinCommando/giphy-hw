@@ -1,14 +1,24 @@
 $(document).ready(function() {
-    var topics = ['Terminator', 'Jurassic Park'];
-    var activeTopic = ''
+    var topics = ['Superman', 'Batman', 'Wonder Woman', 'Spiderman'];
+    var activeButton;
+    var activeText = '';
     
     $('body').on('click','.gif-button', function() {
+        //Removes button
         if ($(this).attr('class').includes('bg-danger')) {
+            if($(this).text() === activeText) {
+                console.log('Removing active button');
+                $('#gif-gifs .row').empty();
+            }
             $(this).remove();
+            var textToDelete = $(this).text();
+            topics = topics.filter(function(topic) {
+                return topic !== textToDelete;
+            })
             updateButtonBadge();
         } else {
 
-        //api key 1J5qzsdvlKkaRytoNtQL0GuD38BGTQM3
+        //Renders the GIF page
         var queryText = $(this).text();
         queryText = queryText.trim();
         queryText = queryText.replace(' ', '+');
@@ -24,7 +34,7 @@ $(document).ready(function() {
             $('#gif-gifs .row').empty();
             response.data.forEach(function(element) {
                 $('#gif-gifs .row').append(`
-                <div class="card col-6">
+                <div class="card col-xs-12 col-sm-6">
                     <img class="card-img-top" src="${element.images.fixed_width.url}" alt="${element.title}">
                     <div class="card-body">
                         <h5 class="card-title">${element.title}</h5>
@@ -34,9 +44,15 @@ $(document).ready(function() {
                 `);
             });
         });
-        
+        //Changes button to active
+        if(typeof activeButton !== 'undefined') {
+            activeButton.attr('class', 'dropdown-item gif-button');
+        }
         $(this).attr('class', 'dropdown-item gif-button active');
+        activeButton = $(this);
+        activeText = $(this).text();
 
+        //Clicking active button twice turns it off
         } else {
             $(this).attr('class', 'dropdown-item gif-button');
             $('#gif-gifs .row').empty();
@@ -70,6 +86,7 @@ $(document).ready(function() {
         }
     });
 
+    //Renders buttons in the 'Topics' dropdown menu
     function renderButtons() {
         console.log(topics);
         $('#gif-buttons').empty();
