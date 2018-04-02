@@ -74,10 +74,12 @@ $(document).ready(function() {
     $('body').on('click', '#edit-buttons', function(event) {
         event.preventDefault();
         if ($(this).attr('class').includes('active')) {
-            $('body').find('.gif-button').attr('class', 'dropdown-item gif-button');
+            console.log('Active text is ' + activeText);
+            $('.gif-button[class!="dropdown-item gif-button active"]').attr('class','dropdown-item gif-button');
             $(this).text('Edit buttons');
             $(this).attr('class', 'dropdown-item');
-
+            $(`.gif-button:contains(${activeText})`).attr('class', 'dropdown-item gif-button active');
+            
         } else {
         console.log('Click button to remove');
         $(this).attr('class', 'dropdown-item active');
