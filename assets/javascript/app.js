@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    var topics = ['Superman', 'Batman', 'Wonder Woman', 'Spiderman'];
+    var topics = ['Superman', 'Batman', 'Wonder Woman', 'Teen Titans'];
     var activeButton;
     var activeText = '';
     
@@ -35,7 +35,7 @@ $(document).ready(function() {
             response.data.forEach(function(element) {
                 $('#gif-gifs .row').append(`
                 <div class="card col-xs-12 col-sm-6">
-                    <img class="card-img-top" src="${element.images.fixed_width.url}" alt="${element.title}">
+                    <img class="card-img-top gif" src="${element.images.fixed_width.url}" alt="${element.title}" data-still="${element.images.fixed_width_still.url}" data-animated="${element.images.fixed_width.url}" data-state="animated">
                     <div class="card-body">
                         <h5 class="card-title">${element.title}</h5>
                         <p class="card-text">Rating: ${element.rating}</p>
@@ -84,6 +84,20 @@ $(document).ready(function() {
         $('body').find('.gif-button').attr('class', 'dropdown-item gif-button bg-danger text-white');
         $(this).text('Cancel');
         }
+    });
+
+    $('body').on('click', '.gif', function(event) {
+        event.preventDefault();
+        console.log('Clicked ' + $(this).attr('alt'));
+        var state = $(this).attr('data-state');
+        if (state === 'animated') {
+            $(this).attr('src', `${$(this).attr('data-still')}`);
+            $(this).attr('data-state', 'still');
+        } else if (state === 'still') {
+            $(this).attr('src', `${$(this).attr('data-animated')}`);
+            $(this).attr('data-state', 'animated');
+        }
+
     });
 
     //Renders buttons in the 'Topics' dropdown menu
