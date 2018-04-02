@@ -1,7 +1,15 @@
 #help {
-    position: relative;
-    left: 30vw;
-    top: 35vh;
+    position: absolute;
+    top: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+}
+
+#gif-gifs .card {
+    margin: 15px;
 }
 
 button {

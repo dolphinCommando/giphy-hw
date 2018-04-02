@@ -5,10 +5,12 @@ $(document).ready(function() {
     
     $('body').on('click','.gif-button', function() {
         //Removes button
+        
         if ($(this).attr('class').includes('bg-danger')) {
             if($(this).text() === activeText) {
                 console.log('Removing active button');
                 $('#gif-gifs .row').empty();
+                 $('#help').css('visibility', 'visible');
             }
             $(this).remove();
             var textToDelete = $(this).text();
@@ -34,7 +36,7 @@ $(document).ready(function() {
             $('#gif-gifs .row').empty();
             response.data.forEach(function(element) {
                 $('#gif-gifs .row').append(`
-                <div class="card col-xs-12 col-sm-6">
+                <div class="card col-xs-11 col-md-5">
                     <img class="card-img-top gif" src="${element.images.fixed_width.url}" alt="${element.title}" data-still="${element.images.fixed_width_still.url}" data-animated="${element.images.fixed_width.url}" data-state="animated">
                     <div class="card-body">
                         <h5 class="card-title">${element.title}</h5>
@@ -43,6 +45,7 @@ $(document).ready(function() {
                 </div>
                 `);
             });
+            $('#help').css('visibility', 'hidden');
         });
         //Changes button to active
         if(typeof activeButton !== 'undefined') {
@@ -51,11 +54,13 @@ $(document).ready(function() {
         $(this).attr('class', 'dropdown-item gif-button active');
         activeButton = $(this);
         activeText = $(this).text();
+       
 
         //Clicking active button twice turns it off
         } else {
             $(this).attr('class', 'dropdown-item gif-button');
             $('#gif-gifs .row').empty();
+            $('#help').css('visibility', 'visible');
 
         }
         }
